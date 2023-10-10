@@ -19,7 +19,7 @@ function App() {
 
   
   return (
-    <div className="w-screen  h-screen flex items-center relative max-w-[2000px] mx-auto">
+    <div className="w-screen  h-screen flex items-center relative max-w-[1440px] mx-auto">
       <div className="w-[50%] max-w-[430px]  h-full absolute left-0 overflow-hidden">
         <span className="w-[130%]  absolute top-0 -left-36 h-[60%] lg:h-[85%] bg-gradient-to-br from-degLightMagenta to-degLightViolet  block rounded-b-[300px] z-0"></span>
       </div>
