@@ -38,7 +38,7 @@ function App() {
             <div className=" overflow-y-auto p-2">
               {/* screen */}
 
-              <div className="overflow-y-auto h-[360px]">
+              <div className="overflow-hidden h-[360px]">
                 <p className=" w-[130px] h-[32px] text-[7px] text-chatLeft bg-bgChatLeft font-bold p-2 mb-2 rounded-lg">
                   That sounds great. I’d be happy with that.
                 </p>
