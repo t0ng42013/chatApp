@@ -33,14 +33,13 @@ Users should be able to:
 
 ### Links
 
-Live Site URL: [Live site of the challenge hosted here]()
+Live Site URL: [Live site of the challenge hosted here](https://chat-app-lga.vercel.app/)
 
 ### Built with
 
 - Semantic HTML5 markup
 - Tailwind CSS 
 - Javscript
-- FlexBox
 - React
 
 
