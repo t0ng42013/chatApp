@@ -1,5 +1,6 @@
 import { RiArrowDropLeftLine } from "react-icons/ri";
 import { HiEllipsisVertical } from "react-icons/hi2";
+import avatar from "/src/assets/avatar.jpg";
 
 
 export const ChatHeader = () => {
@@ -12,7 +13,7 @@ export const ChatHeader = () => {
         </button>
         <div className=" h-full w-full flex items-center">
           <figure className="overflow-hidden w-[30px] h-[30px] rounded-full border-2">
-            <img src="./src/assets/avatar.jpg" alt="foto avatar" />
+            <img src={avatar} alt="foto avatar" />
           </figure>
           <div className="h-full text-white  px-2 pt-1">
             <h2 className="text-xs font-semibold">Samuel Green </h2>

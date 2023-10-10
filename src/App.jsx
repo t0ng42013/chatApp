@@ -1,6 +1,9 @@
 
 import React, { useState } from "react";
 
+import dogImage1 from "/src/assets/dog-image-1.jpg";
+import dogImage2 from "/src/assets/dog-image-2.jpg";
+import dogImage3 from "/src/assets/dog-image-3.jpg";
 import { ChatDescription } from "./components/ChatDescription";
 import { ChatInput } from "./components/ChatInput";
 import { ChatHeader } from "./components/ChatHeader";
@@ -45,17 +48,17 @@ function App() {
                 <div className="flex ml-auto mt-4 mb-2 w-[70%] overflow-hidden">
                   <img
                     className="w-11 ml-1 rounded-md"
-                    src="./src/assets/dog-image-2.jpg"
+                    src={dogImage2}
                     alt="perro"
                   />
                   <img
                     className="w-11 ml-1 rounded-md"
-                    src="./src/assets/dog-image-1.jpg"
+                    src={dogImage1}
                     alt="perro"
                   />
                   <img
                     className="w-11 ml-1 rounded-md"
-                    src="./src/assets/dog-image-3.jpg"
+                    src={dogImage3}
                     alt="perro"
                   />
                 </div>
