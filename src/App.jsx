@@ -1,29 +1,20 @@
 
-import React, { useState, useEffect, useRef } from "react";
-import { RiArrowDropLeftLine, RiArrowRightSLine } from "react-icons/ri";
-import { HiEllipsisVertical } from "react-icons/hi2";
+import React, { useState } from "react";
+
+import { ChatDescription } from "./components/ChatDescription";
+import { ChatInput } from "./components/ChatInput";
+import { ChatHeader } from "./components/ChatHeader";
+import ChatMessages from "./components/ChatMessage";
 
 
 function App() {
-  const [screen, setScreen] = useState("");
   const [chat, setChat] = useState([]);
-  const chatContainerRef = useRef(null);
 
-  useEffect(() => {
-    // Desplazar el chat hacia abajo cada vez que el estado de chat cambia
-    chatContainerRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [chat]);
+   const addMessage = (message) => {
+     setChat([...chat, message]);
+   };
 
-  const formChat = (e) => {
-    e.preventDefault();
-    if (!screen.length) return;
-    setChat([...chat, screen]); // Agrega el mensaje del estado screen al array de chat
-    setScreen(""); // Limpia el estado screen después de agregar el mensaje al chat
-  };
-
-  const onChangeMessage = (e) => {
-    setScreen(e.target.value);
-  };
+  
   return (
     <div className="w-screen  h-screen flex items-center relative max-w-[2000px] mx-auto">
       <div className="w-[50%] max-w-[430px]  h-full absolute left-0 overflow-hidden">
@@ -33,32 +24,14 @@ function App() {
         <span className="w-[130%]  absolute bottom-0 -right-36 h-[85%] bg-[#F7F5FA] block rounded-t-[300px] z-0"></span>
       </div>
       <section className=" lg:ml-[290px] w-[960px] h-[630px] flex  justify-center items-center  flex-col lg:flex-row">
-        {/* diseño mobile */}
+      
+      
         <div className=" border shadow-md shadow-slate-600 bg-white border-e-blue-500 w-[250px] h-[500px] p-3 rounded-[32px] z-10">
           <div className="bg-bgApp w-full h-full rounded-[22px] overflow-hidden relative">
+            
             {/* header */}
-            <div className="w-full h-[70px] bg-gradient-to-r from-degLightViolet to-degLightMagenta rounded-b-md ">
-              <span className="absolute -translate-y-1/2 left-1/2  -translate-x-1/2 mx-auto w-[130px] h-[40px]  bg-white block rounded-[22px]"></span>
-              <div className="h-[100%] w-full flex justify-between pt-6 px-1">
-                <button className="text-white font-bold p-0 text-4xl">
-                  <RiArrowDropLeftLine />
-                </button>
-                <div className=" h-full w-full flex items-center">
-                  <figure className="overflow-hidden w-[30px] h-[30px] rounded-full border-2">
-                    <img src="./src/assets/avatar.jpg" alt="foto avatar" />
-                  </figure>
-                  <div className="h-full text-white  px-2 pt-1">
-                    <h2 className="text-xs font-semibold">Samuel Green </h2>
-                    <p className="text-[8px] text-placeholderText">
-                      Available to Walk
-                    </p>
-                  </div>
-                </div>
-                <button className="text-white text-2xl">
-                  <HiEllipsisVertical />
-                </button>
-              </div>
-            </div>
+            <ChatHeader></ChatHeader>
+
             <div className=" overflow-y-auto p-2">
               {/* screen */}
 
@@ -121,45 +94,16 @@ function App() {
                 </div>
 
                 {/* Renderizar mensajes del array chat usando map */}
-                {chat.map((message, index) => (
-                  <p
-                    key={index}
-                    className="w-[130px] min-h-[32px] text-[7px] text-chatLeft bg-bgChatLeft font-bold p-2 mb-2 rounded-lg break-words"
-                  >
-                    {message}
-                  </p>
-                ))}
-                <div ref={chatContainerRef}></div>
+                
+                <ChatMessages chat={chat}/>
               </div>
 
-              <form
-                onClick={(e) => formChat(e)}
-                className="flex justify-center relative"
-              >
-                <input
-                  className="rounded-2xl h-[30px] text-[7px] w-[210px] px-4"
-                  type="text"
-                  placeholder="Type a message…"
-                  value={screen}
-                  onChange={(e) => onChangeMessage(e)}
-                />
-                <button className="absolute top-[3px] right-1 w-[25px] text-2xl bg-bgButton rounded-full text-white flex justify-center items-center font-bold">
-                  <RiArrowRightSLine />
-                </button>
-              </form>
+             <ChatInput onSendMessage={addMessage}/>
             </div>
           </div>
         </div>
 
-        <div className="lg:mx-[100px] w-full h-[250px] p-5 z-10 text-center max-w-[360px] lg:text-start lg:max-w-[500px]">
-          <h1 className=" text-4xl font-bold mb-8">Simple booking</h1>
-          <p className="text-paragraph text-lg">
-            Stay in touch with our dog walkers through the chat interface. This
-            makes it easy to discuss arrangements and make bookings. Once the
-            walk has been completed you can rate your walker and book again all
-            through the chat.
-          </p>
-        </div>
+        <ChatDescription />
       </section>
     </div>
   );
